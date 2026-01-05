@@ -47,10 +47,10 @@ export const LanguagesBlock: React.FC<Props> = async ({ title, limit }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {languages.map((lang) => (
-          <div key={lang.id} className="bg-card rounded border border-border p-5">
+          <div key={lang.id} className="bg-card rounded border border-border p-4">
             <div className="flex justify-between items-center mb-3">
               <h3 className="font-bold">{lang.name}</h3>
-              <span className="text-xs font-semibold text-muted-foreground bg-muted px-2 py-1 rounded-full">
+              <span className="text-xs font-semibold bg-secondary text-secondary-foreground px-2 py-1 rounded-full">
                 {getProficiencyLabel(lang.level)}
               </span>
             </div>

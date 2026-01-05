@@ -31,7 +31,7 @@ export const LearningBlock: React.FC<Props> = async ({ title, limit }) => {
           >
             <div className="mb-3">
               <h3 className="text-lg font-bold leading-snug mb-1">{item.title}</h3>
-              <div className="text-sm font-semibold text-primary">{item.source}</div>
+              <div className="text-sm font-semibold text-muted-foreground">{item.source}</div>
             </div>
 
             <div className="space-y-2 mt-auto text-sm text-muted-foreground">

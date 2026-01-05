@@ -33,43 +33,30 @@ export const EducationBlock: React.FC<Props> = async ({ title, limit }) => {
     <div className="container">
       {title && <h2 className="text-3xl font-bold mb-8 md:mb-12">{title}</h2>}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="flex flex-col gap-8">
         {educations.map((edu) => {
           const startDate = formatDate(edu.start_date)
           const endDate = edu.end_date ? formatDate(edu.end_date) : 'Present'
-          const isCompleted = edu.status === 'completed'
 
           return (
-            <div
-              key={edu.id}
-              className="bg-card rounded border border-border p-4 flex flex-col h-full"
-            >
-              <div className="mb-4">
-                <div className="flex justify-between items-start gap-4">
-                  <h3 className="text-xl font-bold leading-tight">{edu.title}</h3>
-                  <span
-                    className={`text-xs font-semibold px-2 py-1 rounded-full uppercase tracking-wider whitespace-nowrap ${
-                      isCompleted
-                        ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
-                        : 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300'
-                    }`}
-                  >
-                    {edu.type}
-                  </span>
+            <div key={edu.id} className="bg-card rounded border border-border p-4">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4 gap-2">
+                <div>
+                  <h3 className="text-xl font-bold">{edu.title}</h3>
+                  <h4 className="text-lg italic">{edu.institution}</h4>
                 </div>
-                <div className="text-lg text-primary font-medium mt-1">{edu.institution}</div>
+                <div className="whitespace-nowrap self-start">
+                  <div className="text-sm font-medium text-primary-foreground bg-primary px-3 py-1 rounded mb-2">
+                    {startDate} — {endDate}
+                  </div>
+                  <div className="text-sm font-medium text-muted-foreground">
+                    {edu.location && <span>{edu.location}</span>}
+                  </div>
+                </div>
               </div>
 
-              <div className="flex items-center text-sm font-medium text-muted-foreground bg-muted px-3 py-1 rounded-full w-fit mb-4">
-                <span>
-                  {startDate} — {endDate}
-                </span>
-                {edu.location && (
-                  <>
-                    <span className="mx-2">•</span>
-                    <span>{edu.location}</span>
-                  </>
-                )}
+              <div className="inline-flex text-xs font-semibold px-2 py-1 rounded-full border border-border uppercase tracking-wider whitespace-nowrap bg-tertiary text-muted-foreground">
+                {edu.type}
               </div>
 
               {edu.description && (

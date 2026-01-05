@@ -53,17 +53,19 @@ export const ExperienceBlock: React.FC<Props> = async ({ title, limit }) => {
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4 gap-2">
                 <div>
                   <h3 className="text-xl font-bold">{exp.role_title}</h3>
-                  <div className="text-lg text-primary font-medium">{exp.company_name}</div>
+                  <h4 className="text-lg italic">{exp.company_name}</h4>
                 </div>
-                <div className="text-sm font-medium text-muted-foreground bg-muted px-3 py-1 rounded whitespace-nowrap self-start">
-                  {startDate} — {endDate}
+                <div className="whitespace-nowrap self-start">
+                  <div className="text-sm font-medium text-primary-foreground bg-primary px-3 py-1 rounded mb-2">
+                    {startDate} — {endDate}
+                  </div>
+                  <div className="text-sm font-medium text-muted-foreground">
+                    {exp.location && <span>{exp.location}</span>}
+                  </div>
                 </div>
               </div>
 
               <div className="mb-6">
-                {/* Context / Summary */}
-                {exp.context && <p className="mb-4 text-muted-foreground">{exp.context}</p>}
-
                 {/* RichText Responsibilities */}
                 <RichText
                   data={exp.responsibilities}
@@ -75,14 +77,11 @@ export const ExperienceBlock: React.FC<Props> = async ({ title, limit }) => {
               {/* Skills - Per Experience */}
               {skills && skills.length > 0 && (
                 <div className="border-t border-border pt-4 mt-4">
-                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-                    Technologies used
-                  </p>
                   <div className="flex flex-wrap gap-2">
                     {skills.map((skill) => (
                       <span
                         key={skill.id}
-                        className="inline-flex items-center px-2.5 py-1 rounded text-sm font-medium bg-secondary text-secondary-foreground"
+                        className="inline-flex items-center px-2.5 py-1 rounded border border-border text-sm font-medium bg-tertiary text-muted-foreground"
                       >
                         {skill.name}
                       </span>
