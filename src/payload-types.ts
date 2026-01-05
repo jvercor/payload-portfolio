@@ -798,6 +798,7 @@ export interface Experience {
   role_title: string;
   company_name: string;
   start_date: string;
+  is_current?: boolean | null;
   end_date?: string | null;
   location?: string | null;
   context: string;
@@ -845,7 +846,22 @@ export interface Education {
   start_date: string;
   end_date?: string | null;
   status: 'completed' | 'in_progress';
-  description?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  media?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -1478,6 +1494,7 @@ export interface ExperiencesSelect<T extends boolean = true> {
   role_title?: T;
   company_name?: T;
   start_date?: T;
+  is_current?: T;
   end_date?: T;
   location?: T;
   context?: T;
@@ -1499,6 +1516,7 @@ export interface EducationsSelect<T extends boolean = true> {
   end_date?: T;
   status?: T;
   description?: T;
+  media?: T;
   updatedAt?: T;
   createdAt?: T;
 }

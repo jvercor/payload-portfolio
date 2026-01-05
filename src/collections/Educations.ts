@@ -60,7 +60,13 @@ export const Educations: CollectionConfig = {
     },
     {
       name: 'description',
-      type: 'textarea',
+      type: 'richText',
+    },
+    {
+      name: 'media',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
     },
   ],
 }

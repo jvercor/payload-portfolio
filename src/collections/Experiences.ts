@@ -34,9 +34,18 @@ export const Experiences: CollectionConfig = {
       required: true,
     },
     {
+      name: 'is_current',
+      type: 'checkbox',
+      label: 'Current Role',
+      defaultValue: false,
+    },
+    {
       name: 'end_date',
       label: 'End Date',
       type: 'date',
+      admin: {
+        condition: (_, siblingData) => !siblingData.is_current,
+      },
     },
     {
       name: 'location',
