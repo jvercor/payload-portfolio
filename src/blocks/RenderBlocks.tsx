@@ -7,6 +7,10 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { ExperienceBlock } from '@/blocks/ExperienceBlock/Component'
+import { EducationBlock } from '@/blocks/EducationBlock/Component'
+import { LearningBlock } from '@/blocks/LearningBlock/Component'
+import { LanguagesBlock } from '@/blocks/LanguagesBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -14,6 +18,10 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  experience: ExperienceBlock,
+  education: EducationBlock,
+  learning: LearningBlock,
+  languages: LanguagesBlock,
 }
 
 export const RenderBlocks: React.FC<{

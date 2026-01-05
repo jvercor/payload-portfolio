@@ -6,6 +6,10 @@ import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
+import { ExperienceBlock } from '../../blocks/ExperienceBlock/config'
+import { EducationBlock } from '../../blocks/EducationBlock/config'
+import { LearningBlock } from '../../blocks/LearningBlock/config'
+import { LanguagesBlock } from '../../blocks/LanguagesBlock/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
@@ -72,7 +76,17 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                ExperienceBlock,
+                EducationBlock,
+                LearningBlock,
+                LanguagesBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
