@@ -72,6 +72,11 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
+    experiences: Experience;
+    educations: Education;
+    learnings: Learning;
+    skills: Skill;
+    languages: Language;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -94,6 +99,11 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    experiences: ExperiencesSelect<false> | ExperiencesSelect<true>;
+    educations: EducationsSelect<false> | EducationsSelect<true>;
+    learnings: LearningsSelect<false> | LearningsSelect<true>;
+    skills: SkillsSelect<false> | SkillsSelect<true>;
+    languages: LanguagesSelect<false> | LanguagesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -781,6 +791,92 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences".
+ */
+export interface Experience {
+  id: string;
+  role_title: string;
+  company_name: string;
+  start_date: string;
+  end_date?: string | null;
+  location?: string | null;
+  context: string;
+  responsibilities: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  technologies?: (string | Skill)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: string;
+  name: string;
+  proficiency_level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
+  context_of_use: 'production' | 'labs' | 'study';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "educations".
+ */
+export interface Education {
+  id: string;
+  type: 'degree' | 'certification';
+  title: string;
+  institution: string;
+  location?: string | null;
+  start_date: string;
+  end_date?: string | null;
+  status: 'completed' | 'in_progress';
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "learnings".
+ */
+export interface Learning {
+  id: string;
+  title: string;
+  source: string;
+  instructor?: string | null;
+  duration?: string | null;
+  link?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "languages".
+ */
+export interface Language {
+  id: string;
+  name: string;
+  level: 'native' | 'fluent' | 'business' | 'conversational' | 'basic';
+  context?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -988,6 +1084,26 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: string | User;
+      } | null)
+    | ({
+        relationTo: 'experiences';
+        value: string | Experience;
+      } | null)
+    | ({
+        relationTo: 'educations';
+        value: string | Education;
+      } | null)
+    | ({
+        relationTo: 'learnings';
+        value: string | Learning;
+      } | null)
+    | ({
+        relationTo: 'skills';
+        value: string | Skill;
+      } | null)
+    | ({
+        relationTo: 'languages';
+        value: string | Language;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1353,6 +1469,73 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences_select".
+ */
+export interface ExperiencesSelect<T extends boolean = true> {
+  role_title?: T;
+  company_name?: T;
+  start_date?: T;
+  end_date?: T;
+  location?: T;
+  context?: T;
+  responsibilities?: T;
+  technologies?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "educations_select".
+ */
+export interface EducationsSelect<T extends boolean = true> {
+  type?: T;
+  title?: T;
+  institution?: T;
+  location?: T;
+  start_date?: T;
+  end_date?: T;
+  status?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "learnings_select".
+ */
+export interface LearningsSelect<T extends boolean = true> {
+  title?: T;
+  source?: T;
+  instructor?: T;
+  duration?: T;
+  link?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills_select".
+ */
+export interface SkillsSelect<T extends boolean = true> {
+  name?: T;
+  proficiency_level?: T;
+  context_of_use?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "languages_select".
+ */
+export interface LanguagesSelect<T extends boolean = true> {
+  name?: T;
+  level?: T;
+  context?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
