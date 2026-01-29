@@ -9,6 +9,7 @@ import { imageHero1 } from './image-hero-1'
 import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
+import { getSkillsData, getExperiencesData, getEducationsData, getLanguagesData } from './portfolio'
 
 const collections: CollectionSlug[] = [
   'categories',
@@ -18,6 +19,10 @@ const collections: CollectionSlug[] = [
   'forms',
   'form-submissions',
   'search',
+  'skills',
+  'experiences',
+  'educations',
+  'languages',
 ]
 
 const globals: GlobalSlug[] = ['header', 'footer']
@@ -80,6 +85,20 @@ export const seed = async ({
       },
     },
   })
+
+  payload.logger.info(`— Seeding skills...`)
+
+  const skillsDocs = await Promise.all(
+    getSkillsData().map((skill) =>
+      payload.create({
+        collection: 'skills',
+        data: skill,
+      }),
+    ),
+  )
+
+  // Create a map of skill name -> ID for linking in experiences
+  const skillsMap = new Map(skillsDocs.map((s) => [s.name, s.id]))
 
   payload.logger.info(`— Seeding media...`)
 
@@ -191,6 +210,35 @@ export const seed = async ({
       relatedPosts: [post1Doc.id, post2Doc.id],
     },
   })
+
+  payload.logger.info(`— Seeding experiences, educations, and languages...`)
+
+  const [experiencesDocs, educationsDocs, languagesDocs] = await Promise.all([
+    Promise.all(
+      getExperiencesData(skillsMap).map((exp) =>
+        payload.create({
+          collection: 'experiences',
+          data: exp,
+        }),
+      ),
+    ),
+    Promise.all(
+      getEducationsData().map((edu) =>
+        payload.create({
+          collection: 'educations',
+          data: edu,
+        }),
+      ),
+    ),
+    Promise.all(
+      getLanguagesData().map((lang) =>
+        payload.create({
+          collection: 'languages',
+          data: lang,
+        }),
+      ),
+    ),
+  ])
 
   payload.logger.info(`— Seeding contact form...`)
 
