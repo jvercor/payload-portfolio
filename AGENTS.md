@@ -2,7 +2,23 @@
 
 ## Overview
 
-This repository powers a Payload CMS + Next.js website template featuring a headless backend, production-ready frontend, and robust security and extensibility. This guide is for autonomous coding agents and contributors. **Follow these rules and conventions to ensure high-quality, secure, and maintainable contributions.**
+This repository powers a **custom Payload CMS + Next.js portfolio platform** featuring a headless backend with portfolio-specific collections, a production-ready frontend, and robust security and extensibility. This guide is for autonomous coding agents and contributors. **Follow these rules and conventions to ensure high-quality, secure, and maintainable contributions.**
+
+### Portfolio Features
+
+This custom implementation extends the base Payload template with portfolio-specific functionality:
+
+- **Experiences**: Showcase professional work history, roles, and achievements
+- **Education**: Display educational background, certifications, and credentials
+- **Skills**: Categorized skills with proficiency levels and endorsements
+- **Learnings**: Track learning paths, courses, and development progress
+- **Languages**: Display language proficiencies for multilingual portfolios
+- **Posts & Blog**: Content publishing with layout builder for rich storytelling
+- **Pages**: Flexible page builder for custom layouts and content
+- **Media Management**: Optimized asset handling for images and files
+- **SEO & Search**: Full-featured content discovery and search capabilities
+- **Draft Preview & Live Preview**: Secure content staging before publication
+- **Scheduled Publishing**: Automatic content publication on defined schedules
 
 ---
 

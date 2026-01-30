@@ -1,15 +1,17 @@
-# Payload Website Template
+# Payload Custom Portfolio CMS
 
-This is the official [Payload Website Template](https://github.com/payloadcms/payload/blob/main/templates/website). Use it to power websites, blogs, or portfolios from small to enterprise. This repo includes a fully-working backend, enterprise-grade admin panel, and a beautifully designed, production-ready website.
+This is a **custom Payload CMS + Next.js portfolio platform** built on top of the official Payload Website Template, enhanced with portfolio-specific collections and features. This repo includes a fully-working backend with professional portfolio management, an enterprise-grade admin panel, and a beautifully designed, production-ready website.
 
-This template is right for you if you are working on:
+This platform is right for you if you are working on:
 
-- A personal or enterprise-grade website, blog, or portfolio
-- A content publishing platform with a fully featured publication workflow
-- Exploring the capabilities of Payload
+- A personal or professional portfolio website
+- A portfolio platform showcasing work experience, education, and skills
+- A content publishing platform with portfolio-specific workflows
+- An enterprise portfolio management system
 
 Core features:
 
+- [Portfolio Collections](#portfolio-collections)
 - [Pre-configured Payload Config](#how-it-works)
 - [Authentication](#users-authentication)
 - [Access Control](#access-control)
@@ -46,9 +48,29 @@ pnpx create-payload-app my-project -t website
 
 That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
 
+## Portfolio Collections
+
+This platform includes specialized collections for building comprehensive professional portfolios:
+
+- **Experiences**: Manage and showcase your professional work history, roles, companies, achievements, and responsibilities with rich formatting and media support.
+
+- **Education**: Display your educational background including degrees, institutions, certifications, graduation dates, and additional credentials.
+
+- **Skills**: Create a categorized skillset with proficiency levels, endorsements, and ability to showcase expertise in different domains.
+
+- **Learnings**: Track and organize your continuous learning journey including courses, certifications, learning resources, and development progress.
+
+- **Languages**: Showcase language proficiencies with proficiency levels, helping demonstrate multilingual capabilities.
+
+- **Posts & Blog**: Publish articles, case studies, and blog posts with a rich layout builder for unique storytelling.
+
+- **Pages**: Build custom pages with flexible layouts showcasing your work, services, or any portfolio content.
+
+All portfolio collections are fully integrated with the CMS admin panel, support draft/publish workflows, and are optimized for SEO and search.
+
 ## How it works
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+The Payload config is tailored specifically to the needs of portfolio platforms. It is pre-configured in the following ways:
 
 ### Collections
 
@@ -60,9 +82,29 @@ See the [Collections](https://payloadcms.com/docs/configuration/collections) doc
 
   For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
 
+- #### Experiences
+
+  Showcase your professional work history with companies, roles, achievements, and timelines. Experiences support rich media, descriptions, and are fully searchable.
+
+- #### Education
+
+  Manage your educational background including degrees, institutions, and certifications. Perfect for displaying academic credentials alongside professional experience.
+
+- #### Skills
+
+  Create a comprehensive skillset with categories, proficiency levels, and endorsements. Skills are fully searchable and can be showcased in various formats.
+
+- #### Learnings
+
+  Track your continuous learning journey including courses, certifications, and development progress. Great for showcasing professional development initiatives.
+
+- #### Languages
+
+  Display language proficiencies with proficiency levels. Ideal for multilingual portfolios and international opportunities.
+
 - #### Posts
 
-  Posts are used to generate blog posts, news articles, or any other type of content that is published over time. All posts are layout builder enabled so you can generate unique layouts for each post using layout-building blocks, see [Layout Builder](#layout-builder) for more details. Posts are also draft-enabled so you can preview them before publishing them to your website, see [Draft Preview](#draft-preview) for more details.
+  Posts are used to generate blog posts, case studies, news articles, or any other type of content that is published over time. All posts are layout builder enabled so you can generate unique layouts for each post using layout-building blocks, see [Layout Builder](#layout-builder) for more details. Posts are also draft-enabled so you can preview them before publishing them to your website, see [Draft Preview](#draft-preview) for more details.
 
 - #### Pages
 
@@ -70,11 +112,11 @@ See the [Collections](https://payloadcms.com/docs/configuration/collections) doc
 
 - #### Media
 
-  This is the uploads enabled collection used by pages, posts, and projects to contain media like images, videos, downloads, and other assets. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
+  This is the uploads enabled collection used by pages, posts, experiences, education, and other content to contain media like images, videos, downloads, and other assets. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
 
 - #### Categories
 
-  A taxonomy used to group posts together. Categories can be nested inside of one another, for example "News > Technology". See the official [Payload Nested Docs Plugin](https://payloadcms.com/docs/plugins/nested-docs) for more details.
+  A taxonomy used to group posts together. Categories can be nested inside of one another, for example "Articles > Technology". See the official [Payload Nested Docs Plugin](https://payloadcms.com/docs/plugins/nested-docs) for more details.
 
 ### Globals
 
@@ -152,7 +194,7 @@ We have configured [Scheduled Publish](https://payloadcms.com/docs/versions/draf
 
 ## Website
 
-This template includes a beautifully designed, production-ready front-end built with the [Next.js App Router](https://nextjs.org), served right alongside your Payload app in a instance. This makes it so that you can deploy both your backend and website where you need it.
+This platform includes a beautifully designed, production-ready front-end built with the [Next.js App Router](https://nextjs.org), served right alongside your Payload app in a instance. This makes it so that you can deploy both your backend and website where you need it.
 
 Core features:
 
@@ -163,14 +205,20 @@ Core features:
 - [TailwindCSS styling](https://tailwindcss.com/)
 - [shadcn/ui components](https://ui.shadcn.com/)
 - User Accounts and Authentication
-- Fully featured blog
-- Publication workflow
+- Professional Portfolio Showcase
+  - Experience & Work History Display
+  - Education & Credentials Section
+  - Skills & Expertise Showcase
+  - Learning & Development Tracking
+  - Language Proficiencies
+- Fully featured blog & case studies
+- Publication workflow with scheduling
 - Dark mode
 - Pre-made layout building blocks
-- SEO
-- Search
-- Redirects
-- Live preview
+- SEO optimization
+- Full-text search capabilities
+- Redirects management
+- Live preview & draft preview
 
 ### Cache
 
