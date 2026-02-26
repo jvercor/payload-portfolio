@@ -170,7 +170,7 @@ export interface Page {
   id: string;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'splitHero';
     richText?: {
       root: {
         type: string;
@@ -186,6 +186,7 @@ export interface Page {
       };
       [k: string]: unknown;
     } | null;
+    subtitle?: string | null;
     links?:
       | {
           link: {
@@ -1230,6 +1231,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         richText?: T;
+        subtitle?: T;
         links?:
           | T
           | {

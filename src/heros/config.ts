@@ -35,6 +35,10 @@ export const hero: Field = {
           label: 'Low Impact',
           value: 'lowImpact',
         },
+        {
+          label: 'Split Hero',
+          value: 'splitHero',
+        },
       ],
       required: true,
     },
@@ -53,6 +57,14 @@ export const hero: Field = {
       }),
       label: false,
     },
+    {
+      name: 'subtitle',
+      type: 'text',
+      admin: {
+        condition: (_, { type } = {}) => type === 'splitHero',
+      },
+      label: 'Subtitle',
+    },
     linkGroup({
       overrides: {
         maxRows: 2,
@@ -62,7 +74,7 @@ export const hero: Field = {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact', 'splitHero'].includes(type),
       },
       relationTo: 'media',
       required: true,
