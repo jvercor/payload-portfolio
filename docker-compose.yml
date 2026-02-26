@@ -12,6 +12,8 @@ services:
     command: sh -c "yarn install && yarn dev"
     depends_on:
       - mongo
+    environment:
+      - WATCHPACK_POLLING=true
     env_file:
       - .env
 
