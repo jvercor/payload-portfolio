@@ -62,18 +62,6 @@ body.theme-minimal {
   --layout-content-py: theme('spacing.12');
 }
 
-/* theme-dark: enforces a dark palette by overriding CSS tokens.
-   Pair with data-theme="dark" on <html> to also activate Tailwind dark: variants. */
-body.theme-dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 217.2 32.6% 17.5%;
-  --card-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  color-scheme: dark;
-}
 
 @layer base {
   h1,

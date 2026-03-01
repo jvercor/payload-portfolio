@@ -157,7 +157,6 @@ Every page section — header, hero, content blocks, footer — must follow this
 |---|---|
 | `theme-grid` | Bold `1px solid` borders between every section |
 | `theme-minimal` | No borders, slightly tighter `py-12` rhythm |
-| `theme-dark` | Overrides all CSS color tokens to a dark palette |
 
 Theme CSS lives in `src/app/(frontend)/globals.css` under the layout abstraction block.
 
