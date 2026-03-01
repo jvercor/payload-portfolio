@@ -32,8 +32,9 @@ export const ExperienceBlock: React.FC<Props> = async ({ title, limit }) => {
   }
 
   return (
-    <div className="container">
-      {title && <h2 className="text-3xl font-bold mb-8 md:mb-12">{title}</h2>}
+    <section className="layout-section">
+      <div className="layout-content">
+        {title && <h2 className="text-3xl font-bold mb-8 md:mb-12">{title}</h2>}
 
       <div className="flex flex-col gap-8">
         {experiences.map((exp) => {
@@ -93,6 +94,7 @@ export const ExperienceBlock: React.FC<Props> = async ({ title, limit }) => {
           )
         })}
       </div>
-    </div>
+      </div>
+    </section>
   )
 }

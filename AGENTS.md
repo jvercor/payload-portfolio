@@ -123,6 +123,44 @@ This custom implementation extends the base Payload template with portfolio-spec
 
 Reference `.cursor/rules/security-critical.mdc` for annotated examples.
 
+### Layout Structure
+
+Every page section — header, hero, content blocks, footer — must follow this structure:
+
+```html
+<section class="layout-section">
+  <div class="layout-content">
+    <!-- content -->
+  </div>
+</section>
+```
+
+**Rules:**
+- Never use `container` directly on a section root or as a standalone spacing element.
+- Never use margin utilities like `my-16` for section-level spacing — spacing is owned by `layout-content`.
+- `layout-section` is responsible for borders and structural framing only.
+- `layout-content` applies container centering and vertical padding (`py-16` by default).
+
+**Spacing modifiers** (add to the `layout-content` div or `contentClassName` prop):
+
+| Class | Padding | Use for |
+|---|---|---|
+| _(none)_ | `py-16` | Default blocks |
+| `layout-content-compact` | `py-8` | Header, footer, tight utility sections |
+| `layout-content-spacious` | `py-24` | Featured hero, call-to-action sections |
+
+**Reusable component:** `src/components/LayoutSection/index.tsx` exports `<LayoutSection>` as an optional wrapper that enforces this pattern. Use it when building new components to avoid repeating the boilerplate. Existing components write the HTML directly — both approaches are valid.
+
+**Theme switching:** add a class to `<body>` to apply a site-wide layout theme. Themes modify borders, spacing, and backgrounds — no per-component theme logic is ever needed.
+
+| Body class | Effect |
+|---|---|
+| `theme-grid` | Bold `1px solid` borders between every section |
+| `theme-minimal` | No borders, slightly tighter `py-12` rhythm |
+| `theme-dark` | Overrides all CSS color tokens to a dark palette |
+
+Theme CSS lives in `src/app/(frontend)/globals.css` under the layout abstraction block.
+
 ### React & Payload Admin
 
 - Prefer Server Components; use `'use client'` for interactivity/state.

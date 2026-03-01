@@ -30,10 +30,11 @@ export const EducationBlock: React.FC<Props> = async ({ title, limit }) => {
   }
 
   return (
-    <div className="container">
-      {title && <h2 className="text-3xl font-bold mb-8 md:mb-12">{title}</h2>}
+    <section className="layout-section">
+      <div className="layout-content">
+        {title && <h2 className="text-3xl font-bold mb-8 md:mb-12">{title}</h2>}
 
-      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8">
         {educations.map((edu) => {
           const startDate = formatDate(edu.start_date)
           const endDate = edu.end_date ? formatDate(edu.end_date) : 'Present'
@@ -68,6 +69,7 @@ export const EducationBlock: React.FC<Props> = async ({ title, limit }) => {
           )
         })}
       </div>
-    </div>
+      </div>
+    </section>
   )
 }

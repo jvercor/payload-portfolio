@@ -114,7 +114,9 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className="container lg:max-w-[48rem]">
+    <section className="layout-section">
+      <div className="layout-content">
+        <div className="lg:max-w-[48rem]">
       {enableIntro && introContent && !hasSubmitted && (
         <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
       )}
@@ -157,7 +159,9 @@ export const FormBlock: React.FC<
             </form>
           )}
         </FormProvider>
+        </div>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }

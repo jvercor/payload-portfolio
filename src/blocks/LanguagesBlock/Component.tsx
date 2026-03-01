@@ -42,10 +42,11 @@ export const LanguagesBlock: React.FC<Props> = async ({ title, limit }) => {
   }
 
   return (
-    <div className="container">
-      {title && <h2 className="text-3xl font-bold mb-8 md:mb-12">{title}</h2>}
+    <section className="layout-section">
+      <div className="layout-content">
+        {title && <h2 className="text-3xl font-bold mb-8 md:mb-12">{title}</h2>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {languages.map((lang) => (
           <div key={lang.id} className="bg-card rounded border border-border p-4">
             <div className="flex justify-between items-center mb-3">
@@ -66,6 +67,7 @@ export const LanguagesBlock: React.FC<Props> = async ({ title, limit }) => {
           </div>
         ))}
       </div>
-    </div>
+      </div>
+    </section>
   )
 }

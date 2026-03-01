@@ -2,6 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /* ─── Layout Abstraction Layer ──────────────────────────────────────────
+   *
+   * layout-section: structural wrapper for every page section.
+   *   - Owns borders and section framing.
+   *   - Adjacent sections share a single border (no doubling) because only
+   *     border-bottom is used; themes add a top border to the first child
+   *     to frame the full page.
+   *
+   * layout-content: inner content wrapper.
+   *   - Applies container behavior (centered, max-width, responsive gutters).
+   *   - Controls vertical rhythm via --layout-content-py CSS variable.
+   *   - Override spacing by adding a modifier class (compact / spacious).
+   * ────────────────────────────────────────────────────────────────────── */
+
+  .layout-section {
+    @apply relative w-full;
+    border-bottom: var(--layout-section-border, none);
+  }
+
+  .layout-content {
+    @apply container;
+    padding-top: var(--layout-content-py, theme('spacing.16'));
+    padding-bottom: var(--layout-content-py, theme('spacing.16'));
+  }
+
+  /* Compact: py-8 — use for header, footer, tight utility sections */
+  .layout-content-compact {
+    --layout-content-py: theme('spacing.8');
+  }
+
+  /* Spacious: py-24 — use for featured hero or call-to-action sections */
+  .layout-content-spacious {
+    --layout-content-py: theme('spacing.24');
+  }
+}
+
+/* ─── Layout Themes (applied as a class on <body>) ───────────────────────
+ *
+ * Themes modify borders, spacing, and backgrounds without touching markup.
+ * All theme logic lives here — zero per-component theme conditionals.
+ * ─────────────────────────────────────────────────────────────────────── */
+
+/* theme-grid: bold structural borders frame every section.
+   Between adjacent sections there is exactly one border (border-bottom of
+   the preceding section). The :first-child rule adds a matching top border
+   to frame the top of the page. */
+body.theme-grid {
+  --layout-section-border: 1px solid hsl(var(--border));
+}
+body.theme-grid .layout-section:first-child {
+  border-top: 1px solid hsl(var(--border));
+}
+
+/* theme-minimal: no decorative borders; slightly tighter vertical rhythm. */
+body.theme-minimal {
+  --layout-section-border: none;
+  --layout-content-py: theme('spacing.12');
+}
+
+/* theme-dark: enforces a dark palette by overriding CSS tokens.
+   Pair with data-theme="dark" on <html> to also activate Tailwind dark: variants. */
+body.theme-dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 217.2 32.6% 17.5%;
+  --card-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  color-scheme: dark;
+}
+
 @layer base {
   h1,
   h2,
